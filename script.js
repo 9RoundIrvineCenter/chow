@@ -1,27 +1,23 @@
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbxkcKjfeqi4NuoGJrHXQnj8Fc9STle-Ji9EIKs1jvlPk5Df5I3Ot-tCzEN51YjRFZ8/exec';
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec';
 
 function fetchWeekStartDate() {
-  fetch(webAppUrl + '?action=updateChowWeek')
+  fetch(webAppUrl + '?action=updateChowWeek', { mode: 'cors' })
     .then(response => {
-      // Check if the response is ok
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok ' + response.statusText);
       }
       return response.text();
     })
     .then(data => {
-      // Log the data to ensure it's being fetched
       console.log('Fetched data:', data);
       document.getElementById('chowWeek').innerText = data;
     })
     .catch(error => {
       console.error('Error fetching week start date:', error);
-      // Optionally, you might want to display an error message on the UI
-      document.getElementById('chowWeek').innerText = 'Error: Unable to fetch CHOW week';
+      document.getElementById('chowWeek').innerText = 'Error: ' + error.message;
     });
 }
 
-// Ensure this function is called when the page loads or when needed
 document.addEventListener('DOMContentLoaded', function() {
   fetchWeekStartDate();
 });
