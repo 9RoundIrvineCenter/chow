@@ -1,4 +1,4 @@
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbxkcKjfeqi4NuoGJrHXQnj8Fc9STle-Ji9EIKs1jvlPk5Df5I3Ot-tCzEN51YjRFZ8/exec';
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec';
 
 function fetchWeekStartDate() {
   fetch(webAppUrl + '?action=updateChowWeek')
