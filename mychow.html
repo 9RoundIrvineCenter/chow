@@ -8,11 +8,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Your HTML content here -->
   <h1 class="animate-title">CHOW for <span id="chowWeek"></span></h1>
   <p class="animate-text">Get your challenge of the week done before Saturday!</p>
   <form id="chowForm" class="animate-form">
-    <!-- Form fields here -->
+    <div class="form-field">
+      <label for="name" class="animate-label">NAME:</label>
+      <input type="text" id="name" name="name" required aria-label="Enter your name" class="animate-input">
+    </div>
+    <div class="form-field">
+      <label for="chowTotal" class="animate-label">CHOW TOTAL:</label>
+      <input type="number" id="chowTotal" name="chowTotal" required aria-label="Enter your CHOW total" class="animate-input">
+    </div>
+    <button type="submit" id="submitButton" class="animate-button">Submit</button>
   </form>
 
   <div id="customModal" class="modal">
