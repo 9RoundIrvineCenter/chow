@@ -1,5 +1,13 @@
-// Your web app URL
 const webAppUrl = 'https://script.google.com/macros/s/AKfycbxkcKjfeqi4NuoGJrHXQnj8Fc9STle-Ji9EIKs1jvlPk5Df5I3Ot-tCzEN51YjRFZ8/exec';
+
+function fetchWeekStartDate() {
+  fetch(webAppUrl + '?action=updateChowWeek')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('chowWeek').innerText = data;
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   var nameField = document.getElementById('name');
@@ -34,16 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var cookieName = getCookie('userName');
   if (cookieName) {
     nameField.value = cookieName;
-  }
-
-  // Function to fetch the week start date
-  function fetchWeekStartDate() {
-    fetch(webAppUrl + '?action=updateChowWeek')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('chowWeek').innerText = data;
-      })
-      .catch(error => console.error('Error:', error));
   }
 
   // Function to show custom modal
