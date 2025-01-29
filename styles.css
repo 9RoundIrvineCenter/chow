@@ -13,7 +13,7 @@
     min-height: 100vh;
     margin: 0;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #CF2030;
     transition: background-color 0.5s ease;
   }
 
@@ -27,13 +27,13 @@
 
   .animate-title {
     font-size: 1.5em; /* Smaller on mobile */
-    color: #333;
+    color: #ffffff;
     animation: fadeIn 1s ease-in;
   }
 
   .animate-text {
     font-size: 1em;
-    color: #666;
+    color: #ffffff;
     animation: slideInFromLeft 1s ease-out;
   }
 
@@ -41,7 +41,7 @@
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     width: 100%;
     max-width: 400px;
     animation: zoomIn 1s ease-out;
@@ -55,6 +55,7 @@
     display: block;
     margin-bottom: 5px;
     color: #333;
+    font-weight: bold;
     transition: color 0.3s ease;
   }
 
@@ -64,19 +65,19 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     transition: all 0.3s ease;
-    font-size: 1em; /* Adjust for mobile */
+    font-size: 1.5em; /* Adjust for mobile */
   }
 
   .animate-input:focus {
     outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    border-color: #CF2030;
+    box-shadow: 0 0 5px rgba(255, 13, 0, 0.5);
   }
 
   .animate-button {
     width: 100%;
     padding: 15px; /* Larger touch target for mobile */
-    background-color: #007BFF;
+    background-color: #CF2030;
     color: white;
     border: none;
     border-radius: 4px;
