@@ -76,18 +76,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Form submission event listener
   document.getElementById('chowForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var name = nameField.value;
     var chowTotal = document.getElementById('chowTotal').value;
-
+  
     // Set cookie for name for 30 days
     setCookie('userName', name, 30);
-
+  
     // Show modal immediately
     showCustomModal('Submitting your CHOW...');
-
+  
     // Submit data to the sheet
     fetch(webAppUrl + '?action=submitData', {
       method: 'POST',
@@ -117,3 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 3000);
     });
   });
+    });
+  });
+  // Ensure this is the last line of your script with no characters or spaces after it
