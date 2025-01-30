@@ -20,9 +20,7 @@ function fetchWeekStartDate() {
 
 document.addEventListener('DOMContentLoaded', function() {
   fetchWeekStartDate();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+  
   var nameField = document.getElementById('name');
 
   // Remove the header if present
@@ -116,6 +114,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 3000);
     });
   });
-    });
-  });
-  // Ensure this is the last line of your script with no characters or spaces after it
+});
