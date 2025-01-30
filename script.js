@@ -28,8 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('chowWeek').innerText = chowWeek;
   
   var nameField = document.getElementById('name');
+  var chowTotalField = document.getElementById('chowTotal');
   var form = document.querySelector('.animate-form');
   var logo = document.querySelector('.logo');
+  var title = document.querySelector('.animate-title');
+  var text = document.querySelector('.animate-text');
 
   // Remove the header if present
   var header = document.querySelector('.apps-material-header');
@@ -81,10 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Show celebration animation if the message is "Nice Work! 🥊"
-    if (message === 'Nice Work! 🥊') {
-      showCelebration();
-    }
+    // Show celebration animation for all success messages
+    showCelebration();
   }
 
   // Function to show celebration animation
@@ -111,15 +112,19 @@ document.addEventListener('DOMContentLoaded', function() {
     e.target.value = value.replace(/[0-9]/g, '');
   });
 
-  // Add focus event to form fields to move the logo and form up
+  // Add focus event to form fields to move the logo, title, and text up
   document.querySelectorAll('.animate-input').forEach(function(input) {
     input.addEventListener('focus', function() {
       logo.classList.add('up');
+      title.classList.add('up');
+      text.classList.add('up');
       form.classList.add('up');
     });
 
     input.addEventListener('blur', function() {
       logo.classList.remove('up');
+      title.classList.remove('up');
+      text.classList.remove('up');
       form.classList.remove('up');
     });
   });
@@ -127,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('chowForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var name = nameField.value;
-    var chowTotal = document.getElementById('chowTotal').value;
+    var chowTotal = chowTotalField.value;
   
     // Set cookie for name for 30 days
     setCookie('userName', name, 30);
@@ -159,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ];
       var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
       showCustomModal(randomMessage);
+      chowTotalField.value = ''; // Clear the CHOW TOTAL field
     })
     .catch((error) => {
       console.error('Error:', error);

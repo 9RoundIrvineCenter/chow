@@ -26,7 +26,7 @@ h1, p {
 
 .logo {
   display: block;
-  margin: 40px auto; /* Adjust the margin to give enough space at the top */
+  margin: 40px 0 20px 0; /* Adjust the margin to give enough space at the top */
   width: 100px;
   height: 100px;
   animation: fadeIn 1s ease-in; /* Apply fade-in effect */
@@ -42,12 +42,22 @@ h1, p {
   font-size: 1.5em; /* Smaller on mobile */
   color: #ffffff;
   animation: fadeIn 1s ease-in;
+  transition: transform 0.5s ease, margin 0.5s ease; /* Add transition for smooth animation */
+}
+
+.animate-title.up {
+  transform: translateY(-50px); /* Move the title up */
 }
 
 .animate-text {
   font-size: 1em;
   color: #ffffff;
   animation: slideInFromBottom 1s ease-out;
+  transition: transform 0.5s ease, margin 0.5s ease; /* Add transition for smooth animation */
+}
+
+.animate-text.up {
+  transform: translateY(-50px); /* Move the text up */
 }
 
 .animate-form {
