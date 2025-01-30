@@ -89,17 +89,25 @@ document.addEventListener('DOMContentLoaded', function() {
   function showCelebration() {
     var celebration = document.getElementById('celebration');
     celebration.innerHTML = ''; // Clear previous animation
+    var emojis = ['🎉', '🎊', '🥳', '💥', '🔥', '💪', '😍'];
     for (var i = 0; i < 100; i++) {
-      var confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.animationDelay = Math.random() * 2 + 's';
-      celebration.appendChild(confetti);
+      var emoji = document.createElement('div');
+      emoji.className = 'emoji';
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + 'vw';
+      emoji.style.animationDelay = Math.random() * 2 + 's';
+      celebration.appendChild(emoji);
     }
     setTimeout(function() {
-      celebration.innerHTML = ''; // Remove confetti after animation
+      celebration.innerHTML = ''; // Remove emojis after animation
     }, 5000);
   }
+
+  // Add input validation to prevent numbers in the name field
+  nameField.addEventListener('input', function(e) {
+    var value = e.target.value;
+    e.target.value = value.replace(/[0-9]/g, '');
+  });
 
   document.getElementById('chowForm').addEventListener('submit', function(e) {
     e.preventDefault();
