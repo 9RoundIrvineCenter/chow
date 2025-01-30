@@ -137,10 +137,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set cookie for name for 30 days
     setCookie('userName', name, 30);
   
-    // Show modal immediately
-    showCustomModal('Submitting your CHOW...');
+    // Show success message immediately
+    var successMessages = [
+      'Nice Work! 🥊',
+      'Great Job! 🎉',
+      'Well Done! 👍',
+      'You Did It! 🏆',
+      'Fantastic! 🌟'
+    ];
+    var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
+    showCustomModal(randomMessage);
+    chowTotalField.value = ''; // Clear the CHOW TOTAL field
 
-    // Send data to the server
+    // Send data to the server asynchronously
     fetch('https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec', {
       method: 'POST',
       headers: {
@@ -155,16 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(data => {
       console.log('Success:', data);
-      var successMessages = [
-        'Nice Work! 🥊',
-        'Great Job! 🎉',
-        'Well Done! 👍',
-        'You Did It! 🏆',
-        'Fantastic! 🌟'
-      ];
-      var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
-      showCustomModal(randomMessage);
-      chowTotalField.value = ''; // Clear the CHOW TOTAL field
     })
     .catch((error) => {
       console.error('Error:', error);
