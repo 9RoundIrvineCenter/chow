@@ -1,25 +1,31 @@
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec';
+function getFormattedWeekStartDate() {
+  var today = new Date();
+  var firstDayOfWeek = today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1); // Monday as first day
+  var weekStartDate = new Date(today.setDate(firstDayOfWeek));
+  
+  var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var month = monthNames[weekStartDate.getMonth()];
+  var day = weekStartDate.getDate();
+  
+  var daySuffix = function(day) {
+    if (day >= 11 && day <= 13) {
+      return day + 'th';
+    }
+    switch (day % 10) {
+      case 1:  return day + 'st';
+      case 2:  return day + 'nd';
+      case 3:  return day + 'rd';
+      default: return day + 'th';
+    }
+  };
 
-function fetchWeekStartDate() {
-  fetch(webAppUrl + '?action=updateChowWeek', { mode: 'cors' })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-      return response.text();
-    })
-    .then(data => {
-      console.log('Fetched data:', data);
-      document.getElementById('chowWeek').innerText = data;
-    })
-    .catch(error => {
-      console.error('Error fetching week start date:', error);
-      document.getElementById('chowWeek').innerText = 'Error: ' + error.message;
-    });
+  return month + ' ' + daySuffix(day) + ' Week';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  fetchWeekStartDate();
+  // Set the CHOW week on the client side
+  var chowWeek = getFormattedWeekStartDate();
+  document.getElementById('chowWeek').innerText = chowWeek;
   
   var nameField = document.getElementById('name');
 
