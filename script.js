@@ -78,6 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
       }
     }
+
+    // Show celebration animation if the message is "Nice Work! 🥊"
+    if (message === 'Nice Work! 🥊') {
+      showCelebration();
+    }
   }
 
   // Function to show celebration animation
