@@ -80,6 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // Function to show celebration animation
+  function showCelebration() {
+    var celebration = document.getElementById('celebration');
+    celebration.innerHTML = ''; // Clear previous animation
+    for (var i = 0; i < 100; i++) {
+      var confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDelay = Math.random() * 2 + 's';
+      celebration.appendChild(confetti);
+    }
+    setTimeout(function() {
+      celebration.innerHTML = ''; // Remove confetti after animation
+    }, 5000);
+  }
+
   document.getElementById('chowForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var name = nameField.value;
@@ -106,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(data => {
       console.log('Success:', data);
-      showCustomModal('Your CHOW has been submitted successfully!');
+      showCustomModal('Nice Work! 🥊');
     })
     .catch((error) => {
       console.error('Error:', error);
