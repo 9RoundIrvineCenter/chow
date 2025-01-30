@@ -223,6 +223,7 @@ h1, p {
 
   .animate-form {
     padding: 15px;
+    max-width: 100%; /* Ensure the form takes full width on small screens */
   }
 
   .animate-input {
