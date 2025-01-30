@@ -30,6 +30,12 @@ h1, p {
   width: 100px;
   height: 100px;
   animation: fadeIn 1s ease-in; /* Apply fade-in effect */
+  transition: transform 0.5s ease, margin 0.5s ease; /* Add transition for smooth animation */
+}
+
+.logo.up {
+  transform: translateY(-50px); /* Move the logo up */
+  margin: 20px auto; /* Adjust margin when logo is moved up */
 }
 
 .animate-title {
@@ -52,6 +58,11 @@ h1, p {
   width: 100%;
   max-width: 600px;
   animation: zoomIn 1s ease-out;
+  transition: transform 0.5s ease; /* Add transition for smooth animation */
+}
+
+.animate-form.up {
+  transform: translateY(-50px); /* Move the form up */
 }
 
 .form-field {

@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('chowWeek').innerText = chowWeek;
   
   var nameField = document.getElementById('name');
+  var form = document.querySelector('.animate-form');
+  var logo = document.querySelector('.logo');
 
   // Remove the header if present
   var header = document.querySelector('.apps-material-header');
@@ -109,6 +111,19 @@ document.addEventListener('DOMContentLoaded', function() {
     e.target.value = value.replace(/[0-9]/g, '');
   });
 
+  // Add focus event to form fields to move the logo and form up
+  document.querySelectorAll('.animate-input').forEach(function(input) {
+    input.addEventListener('focus', function() {
+      logo.classList.add('up');
+      form.classList.add('up');
+    });
+
+    input.addEventListener('blur', function() {
+      logo.classList.remove('up');
+      form.classList.remove('up');
+    });
+  });
+
   document.getElementById('chowForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var name = nameField.value;
@@ -135,7 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(data => {
       console.log('Success:', data);
-      showCustomModal('Nice Work! 🥊');
+      var successMessages = [
+        'Nice Work! 🥊',
+        'Great Job! 🎉',
+        'Well Done! 👍',
+        'You Did It! 🏆',
+        'Fantastic! 🌟'
+      ];
+      var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
+      showCustomModal(randomMessage);
     })
     .catch((error) => {
       console.error('Error:', error);
