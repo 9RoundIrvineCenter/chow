@@ -9,10 +9,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   margin: 0;
-  padding: 20px;
+  padding: 10px;
   background-color: #CF2030;
   transition: background-color 0.5s ease;
 }
@@ -26,9 +26,10 @@ h1, p {
 
 .logo {
   display: block;
-  margin: 10px auto; /* Adjust the margin to give enough space at the top */
-  width: 150px;
-  height: 150px;
+  margin: 40px auto; /* Adjust the margin to give enough space at the top */
+  width: 100px;
+  height: 100px;
+  animation: fadeIn 1s ease-in; /* Apply fade-in effect */
 }
 
 .animate-title {
@@ -40,7 +41,7 @@ h1, p {
 .animate-text {
   font-size: 1em;
   color: #ffffff;
-  animation: slideInFromLeft 1s ease-out;
+  animation: slideInFromBottom 1s ease-out;
 }
 
 .animate-form {
@@ -49,7 +50,7 @@ h1, p {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   animation: zoomIn 1s ease-out;
 }
 
@@ -111,7 +112,7 @@ h1, p {
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
 }
 
 .modal-content {
@@ -151,9 +152,9 @@ h1, p {
   to { opacity: 1; }
 }
 
-@keyframes slideInFromLeft {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+@keyframes slideInFromBottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes zoomIn {
@@ -171,11 +172,48 @@ h1, p {
     font-size: 1.2em;
   }
 
+  .animate-text {
+    font-size: 0.9em;
+  }
+
   .animate-form {
     padding: 15px;
   }
 
+  .animate-input {
+    font-size: 1.2em;
+  }
+
   .animate-button {
     padding: 12px;
+    font-size: 0.9em;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 280px;
+  }
+}
+
+/* Styles for larger screens */
+@media (min-width: 600px) {
+  .animate-title {
+    font-size: 2em; /* Larger on bigger screens */
+  }
+
+  .animate-text {
+    font-size: 1.2em;
+  }
+
+  .animate-input {
+    font-size: 16px;
+  }
+
+  .animate-button {
+    font-size: 18px;
+  }
+
+  .modal-content {
+    width: 60%;
   }
 }
