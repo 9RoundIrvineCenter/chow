@@ -69,13 +69,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close when clicking on the close button
     document.getElementsByClassName('close')[0].onclick = function() {
-      modal.style.display = "none";
+      modal.style.display = 'none';
     }
 
     // Close when clicking outside of the modal
     window.onclick = function(event) {
       if (event.target == modal) {
-        modal.style.display = "none";
+        modal.style.display = 'none';
       }
     }
   }
@@ -90,5 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Show modal immediately
     showCustomModal('Submitting your CHOW...');
+
+    // Send data to the server
+    fetch('https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        action: 'submitData',
+        name: name,
+        chowTotal: chowTotal
+      })
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log('Success:', data);
+      showCustomModal('Your CHOW has been submitted successfully!');
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      showCustomModal('Error submitting your CHOW. Please try again.');
+    });
   });
 });
