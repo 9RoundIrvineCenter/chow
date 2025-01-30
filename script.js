@@ -1,7 +1,7 @@
 const webAppUrl = 'https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec';
 
 function fetchWeekStartDate() {
-  fetch(webAppUrl + '?action=updateChowWeek', { mode: 'no-cors' })
+  fetch(webAppUrl + '?action=updateChowWeek', { mode: 'cors' })
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
@@ -84,34 +84,5 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Show modal immediately
     showCustomModal('Submitting your CHOW...');
-  
-    // Submit data to the sheet
-    fetch(webAppUrl + '?action=submitData', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `name=${encodeURIComponent(name)}&chowTotal=${encodeURIComponent(chowTotal)}`
-    })
-    .then(response => response.text())
-    .then(data => {
-      // Update modal message upon successful submission
-      document.getElementById('modalMessage').innerText = 'Nice Work! 🥊';
-      document.getElementById('chowForm').reset();
-      
-      // Hide modal after a short delay
-      setTimeout(function() {
-        document.getElementById('customModal').style.display = "none";
-      }, 3000);
-    })
-    .catch(error => {
-      // Handle error if needed
-      document.getElementById('modalMessage').innerText = 'Error submitting your CHOW: ' + error.message;
-      
-      // Hide modal after a short delay
-      setTimeout(function() {
-        document.getElementById('customModal').style.display = "none";
-      }, 3000);
-    });
   });
 });
