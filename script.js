@@ -112,20 +112,37 @@ document.addEventListener('DOMContentLoaded', function() {
     e.target.value = value.replace(/[0-9]/g, '');
   });
 
+  // Detect iOS devices
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
   // Add focus event to form fields to move the logo, title, and text up
   document.querySelectorAll('.animate-input').forEach(function(input) {
     input.addEventListener('focus', function() {
-      logo.classList.add('up');
-      title.classList.add('up');
-      text.classList.add('up');
-      form.classList.add('up');
+      if (isIOS) {
+        logo.classList.add('ios-up');
+        title.classList.add('ios-up');
+        text.classList.add('ios-up');
+        form.classList.add('ios-up');
+      } else {
+        logo.classList.add('up');
+        title.classList.add('up');
+        text.classList.add('up');
+        form.classList.add('up');
+      }
     });
 
     input.addEventListener('blur', function() {
-      logo.classList.remove('up');
-      title.classList.remove('up');
-      text.classList.remove('up');
-      form.classList.remove('up');
+      if (isIOS) {
+        logo.classList.remove('ios-up');
+        title.classList.remove('ios-up');
+        text.classList.remove('ios-up');
+        form.classList.remove('ios-up');
+      } else {
+        logo.classList.remove('up');
+        title.classList.remove('up');
+        text.classList.remove('up');
+        form.classList.remove('up');
+      }
     });
   });
 

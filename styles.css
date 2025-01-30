@@ -38,6 +38,11 @@ h1, p {
   margin: 20px auto; /* Adjust margin when logo is moved up */
 }
 
+.logo.ios-up {
+  transform: translateY(-30px); /* Move the logo up less on iOS */
+  margin: 30px auto; /* Adjust margin when logo is moved up on iOS */
+}
+
 .animate-title {
   font-size: 1.5em; /* Smaller on mobile */
   color: #ffffff;
@@ -49,6 +54,10 @@ h1, p {
   transform: translateY(-50px); /* Move the title up */
 }
 
+.animate-title.ios-up {
+  transform: translateY(-30px); /* Move the title up less on iOS */
+}
+
 .animate-text {
   font-size: 1em;
   color: #ffffff;
@@ -58,6 +67,10 @@ h1, p {
 
 .animate-text.up {
   transform: translateY(-50px); /* Move the text up */
+}
+
+.animate-text.ios-up {
+  transform: translateY(-30px); /* Move the text up less on iOS */
 }
 
 .animate-form {
@@ -73,6 +86,10 @@ h1, p {
 
 .animate-form.up {
   transform: translateY(-50px); /* Move the form up */
+}
+
+.animate-form.ios-up {
+  transform: translateY(-30px); /* Move the form up less on iOS */
 }
 
 .form-field {
