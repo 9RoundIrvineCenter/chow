@@ -1,7 +1,7 @@
 const webAppUrl = 'https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec';
 
 function fetchWeekStartDate() {
-  fetch(webAppUrl + '?action=updateChowWeek', { mode: 'cors' })
+  fetch(webAppUrl + '?action=updateChowWeek', { mode: 'no-cors' })
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
