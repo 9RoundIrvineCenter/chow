@@ -127,7 +127,7 @@ h1, p {
   color: #000;
   position: relative; /* Ensure the close button is positioned relative to the modal */
   font-weight: bold;
-  margin: auto; /* Center the modal content horizontally */
+  margin: 200px auto; /* Center the modal content horizontally */
 }
 
 .animate-modal {
@@ -167,7 +167,7 @@ h1, p {
   top: 0;
   font-size: 24px;
   opacity: 0.7;
-  animation: fall 3s linear infinite;
+  animation: fall 3s linear infinite, fadeInOut 3s linear infinite;
 }
 
 @keyframes fall {
@@ -176,9 +176,18 @@ h1, p {
   }
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(360deg);
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
