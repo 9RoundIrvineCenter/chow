@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Function to show celebration animation
-  function showCelebration() {
+  function showCelebrationAnimation() {
     var celebration = document.getElementById('celebration');
     celebration.innerHTML = ''; // Clear previous animation
     var emojis = ['🎉', '🎊', '🥳', '💥', '🔥', '💪', '😍'];
