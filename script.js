@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Function to show custom modal
-  function showCustomModal(message) {
+  function showCustomModal(message, showCelebration) {
     var modal = document.getElementById('customModal');
     document.getElementById('modalMessage').innerText = message;
     modal.style.display = "block";
@@ -118,18 +118,20 @@ document.addEventListener('DOMContentLoaded', function() {
   // Detect iOS devices
   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-  // Add focus event to form fields to move the logo, title, and text up
+  // Add focus event to form fields to move the logo, title, text, and disclaimer up
   document.querySelectorAll('.animate-input').forEach(function(input) {
     input.addEventListener('focus', function() {
       if (isIOS) {
         logo.classList.add('ios-up');
         title.classList.add('ios-up');
         text.classList.add('ios-up');
+        disclaimer.classList.add('ios-up');
         form.classList.add('ios-up');
       } else {
         logo.classList.add('up');
         title.classList.add('up');
         text.classList.add('up');
+        disclaimer.classList.add('up');
         form.classList.add('up');
       }
 
@@ -144,11 +146,13 @@ document.addEventListener('DOMContentLoaded', function() {
         logo.classList.remove('ios-up');
         title.classList.remove('ios-up');
         text.classList.remove('ios-up');
+        disclaimer.classList.remove('ios-up');
         form.classList.remove('ios-up');
       } else {
         logo.classList.remove('up');
         title.classList.remove('up');
         text.classList.remove('up');
+        disclaimer.classList.remove('up');
         form.classList.remove('up');
       }
     });
@@ -164,10 +168,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
 
     if (lastSubmissionDate === today) {
-      showCustomModal('You have already submitted your CHOW today. Please try again tomorrow.');
+      showCustomModal('You have already submitted your CHOW today. Please try again tomorrow.', false);
       return;
     }
-  
+
     // Set cookie for name for 30 days
     setCookie('userName', name, 30);
   
@@ -180,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'Fantastic! 🌟'
     ];
     var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
-    showCustomModal(randomMessage);
+    showCustomModal(randomMessage, true);
     chowTotalField.value = ''; // Clear the CHOW TOTAL field
 
     // Store the submission date in localStorage
@@ -204,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch((error) => {
       console.error('Error:', error);
-      showCustomModal('Error submitting your CHOW. Please try again.');
+      showCustomModal('Error submitting your CHOW. Please try again.', false);
     });
   });
 });
