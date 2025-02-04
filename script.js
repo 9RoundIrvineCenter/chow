@@ -129,6 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
         text.classList.add('up');
         form.classList.add('up');
       }
+
+      // Adjust viewport to prevent scrolling too much upward
+      setTimeout(function() {
+        input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
     });
 
     input.addEventListener('blur', function() {

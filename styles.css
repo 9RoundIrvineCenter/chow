@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden; /* Prevent default scrolling */
+}
+
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -30,17 +35,21 @@ h1, p {
   width: 100px;
   height: 100px;
   animation: fadeIn 1s ease-in; /* Apply fade-in effect */
-  transition: transform 0.5s ease, margin 0.5s ease; /* Add transition for smooth animation */
+  transition: transform 0.5s ease, margin 0.5s ease, width 0.5s ease, height 0.5s ease; /* Add transition for smooth animation */
 }
 
 .logo.up {
   transform: translateY(-50px); /* Move the logo up */
   margin: 20px auto; /* Adjust margin when logo is moved up */
+  width: 50px; /* Reduce the logo size by 50% */
+  height: 50px; /* Reduce the logo size by 50% */
 }
 
 .logo.ios-up {
   transform: translateY(-30px); /* Move the logo up less on iOS */
   margin: 30px auto; /* Adjust margin when logo is moved up on iOS */
+  width: 50px; /* Reduce the logo size by 50% */
+  height: 50px; /* Reduce the logo size by 50% */
 }
 
 .animate-title {
