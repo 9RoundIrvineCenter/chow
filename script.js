@@ -155,6 +155,15 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     var name = nameField.value;
     var chowTotal = chowTotalField.value;
+
+    // Check if the user has already submitted today
+    var lastSubmissionDate = localStorage.getItem('lastSubmissionDate');
+    var today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+
+    if (lastSubmissionDate === today) {
+      showCustomModal('You have already submitted your CHOW today. Please try again tomorrow.');
+      return;
+    }
   
     // Set cookie for name for 30 days
     setCookie('userName', name, 30);
@@ -170,6 +179,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
     showCustomModal(randomMessage);
     chowTotalField.value = ''; // Clear the CHOW TOTAL field
+
+    // Store the submission date in localStorage
+    localStorage.setItem('lastSubmissionDate', today);
 
     // Send data to the server asynchronously
     fetch('https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec', {

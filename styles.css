@@ -254,6 +254,15 @@ h1, p {
   to { transform: scale(1); opacity: 1; }
 }
 
+/* Disclaimer text styling */
+.disclaimer-text {
+  font-size: 12px !important;
+  color: #ffffff9f;
+  text-align: center;
+  margin-top: 20px;
+  padding: 0 10px 0 10px;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 600px) {
   body {
