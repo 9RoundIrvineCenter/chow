@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setTimeout(function() {
       celebration.innerHTML = ''; // Remove emojis after animation
-    }, 5000);
+    }, 3000);
   }
 
   // Add input validation to prevent numbers in the name field
