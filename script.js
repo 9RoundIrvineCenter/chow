@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var logo = document.querySelector('.logo');
   var title = document.querySelector('.animate-title');
   var text = document.querySelector('.animate-text');
+  var disclaimer = document.querySelector('.disclaimer-text');
 
   // Remove the header if present
   var header = document.querySelector('.apps-material-header');

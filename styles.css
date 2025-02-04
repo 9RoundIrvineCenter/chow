@@ -261,6 +261,15 @@ h1, p {
   text-align: center;
   margin-top: 20px;
   padding: 0 10px 0 10px;
+  transition: transform 0.5s ease, margin 0.5s ease; /* Add transition for smooth animation */
+}
+
+.disclaimer-text.up {
+  transform: translateY(-50px); /* Move the disclaimer text up */
+}
+
+.disclaimer-text.ios-up {
+  transform: translateY(-30px); /* Move the disclaimer text up less on iOS */
 }
 
 /* Media Queries for responsiveness */
