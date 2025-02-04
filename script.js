@@ -86,7 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Show celebration animation for all success messages
-    showCelebration();
+    if (showCelebration) {
+      showCelebrationAnimation();
+    }
   }
 
   // Function to show celebration animation
