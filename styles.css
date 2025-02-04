@@ -164,9 +164,9 @@ h1, p {
 
 .modal-content {
   background-color: #fefefe;
-  padding: 20px;
+  padding: 60px 20px 40px 20px;
   border: 1px solid #888;
-  width: 90%;
+  width: 100%;
   max-width: 300px;
   border-radius: 10px;
   text-align: center;
