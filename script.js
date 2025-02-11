@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var title = document.querySelector('.animate-title');
   var text = document.querySelector('.animate-text');
   var disclaimer = document.querySelector('.disclaimer-text');
+  var chowWeekElement = document.getElementById('chowWeek'); // Get the element to display chowWeek
+
+  // Set the CHOW week on the client side
+  var chowWeek = getFormattedWeekStartDate();
+  chowWeekElement.innerText = chowWeek;
 
   // Function to get cookie
   function getCookie(name) {
