@@ -23,10 +23,6 @@ function getFormattedWeekStartDate() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Set the CHOW week on the client side
-  var chowWeek = getFormattedWeekStartDate();
-  document.getElementById('chowWeek').innerText = chowWeek;
-  
   var nameField = document.getElementById('name');
   var chowTotalField = document.getElementById('chowTotal');
   var form = document.querySelector('.animate-form');
@@ -35,12 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var text = document.querySelector('.animate-text');
   var disclaimer = document.querySelector('.disclaimer-text');
 
-  // Remove the header if present
-  var header = document.querySelector('.apps-material-header');
-  if (header) {
-    header.style.display = 'none';
-  }
-  
   // Function to get cookie
   function getCookie(name) {
     var nameEQ = name + "=";
@@ -59,6 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
     var expires = "; expires=" + date.toGMTString();
     document.cookie = name + "=" + value + expires + "; path=/";
+  }
+
+  // Generate a unique user ID if not already set
+  var userId = getCookie('userId');
+  if (!userId) {
+    userId = 'user-' + Math.random().toString(36).substr(2, 9);
+    setCookie('userId', userId, 365); // Set cookie for 1 year
   }
 
   // Set name from cookie if exists
@@ -198,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       body: new URLSearchParams({
         action: 'submitData',
+        userId: userId,
         name: name,
         chowTotal: chowTotal
       })
