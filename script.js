@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
     localStorage.setItem('lastSubmissionDate', today);
   
-    fetch('https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbx9nC4lzYhLztrzVDNR_SRk3hnqtVlR4WOQTts21-M8kE2WQPYDmbvYibjMuwZ_k0IO/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
