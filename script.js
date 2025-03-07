@@ -164,20 +164,27 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     var name = nameField.value;
     var chowTotal = chowTotalField.value;
-
-    // Check if the user has already submitted today
+  
+    // Client-side validation
+    if (!name) {
+      showCustomModal('Name is required.', false);
+      return;
+    }
+    if (isNaN(chowTotal) || chowTotal === '') {
+      showCustomModal('CHOW Total must be a number.', false);
+      return;
+    }
+  
     var lastSubmissionDate = localStorage.getItem('lastSubmissionDate');
-    var today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-
+    var today = new Date().toISOString().split('T')[0];
+  
     if (lastSubmissionDate === today) {
       showCustomModal('You have already submitted your CHOW today. Please try again tomorrow.', false);
       return;
     }
-
-    // Set cookie for name for 30 days
+  
     setCookie('userName', name, 30);
   
-    // Show success message immediately
     var successMessages = [
       'Nice Work! 🥊',
       'Great Job! 🎉',
@@ -187,12 +194,10 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
     var randomMessage = successMessages[Math.floor(Math.random() * successMessages.length)];
     showCustomModal(randomMessage, true);
-    chowTotalField.value = ''; // Clear the CHOW TOTAL field
-
-    // Store the submission date in localStorage
+    chowTotalField.value = ''; // Clear after validation
+  
     localStorage.setItem('lastSubmissionDate', today);
-
-    // Send data to the server asynchronously
+  
     fetch('https://script.google.com/macros/s/AKfycbzaffgMUNebwuxab0kTuX-ITNjF2RuFEhruaTi0w3TTw8KvfRbl4VSOzMDeXTaDtLj1/exec', {
       method: 'POST',
       headers: {
@@ -208,10 +213,17 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.text())
     .then(data => {
       console.log('Success:', data);
+      if (data.startsWith('Error:')) {
+        showCustomModal(data, false);
+        localStorage.removeItem('lastSubmissionDate');
+        chowTotalField.value = chowTotal;
+      }
     })
     .catch((error) => {
       console.error('Error:', error);
       showCustomModal('Error submitting your CHOW. Please try again.', false);
+      localStorage.removeItem('lastSubmissionDate');
+      chowTotalField.value = chowTotal;
     });
   });
 });
